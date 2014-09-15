@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 public class IntroPagerAdapter extends FragmentPagerAdapter {
 
+	@SuppressWarnings("unused")
 	private static Context tContext;
 	private static final int NUM_PAGES = 3;
 	private final String[] tabNameList = { "ALL NEWS", "BOOKMARKED NEWS" };
@@ -32,7 +33,7 @@ public class IntroPagerAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public Fragment getItem(int index) {
-		return IntroFragment.newInstance(tContext, index);
+		return IntroFragment.newInstance(index);
 	}
 
 	@Override

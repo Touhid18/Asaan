@@ -17,21 +17,18 @@ public class IntroFragment extends Fragment {
 	@SuppressWarnings("unused")
 	private static Context thisContext;
 
-	private int position;
-
-	public IntroFragment(int pos) {
-		this.position = pos;
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Log.d(tag, "inside onCreate()");
 	}
 
-	public static IntroFragment newInstance(Context context, int pos) {
-		thisContext = context;
-		return new IntroFragment(pos);
+	public static IntroFragment newInstance(int pos) {
+		IntroFragment f = new IntroFragment();
+		Bundle b = new Bundle();
+		b.putInt("pos", pos);
+		f.setArguments(b);
+		return f;
 	}
 
 	@Override
@@ -39,12 +36,14 @@ public class IntroFragment extends Fragment {
 		Log.d(tag, "inside OncreateView()");
 		ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.frag_intro, container, false);
 		LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.llFragIntro);
+		int position = getArguments().getInt("pos");
+		Log.d("IntroFragment", "position: " + position);
 		if (position == 1)
-			ll.setBackgroundResource(R.drawable.qi1);
+			ll.setBackgroundResource(R.color.BlueViolet);
 		else if (position == 0)
-			ll.setBackgroundResource(android.R.color.darker_gray);
+			ll.setBackgroundResource(R.color.Red);
 		else if (position == 2)
-			ll.setBackgroundResource(android.R.color.background_light);
+			ll.setBackgroundResource(R.color.Green);
 		return rootView;
 	}
 }
